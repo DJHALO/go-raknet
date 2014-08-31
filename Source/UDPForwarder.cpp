@@ -240,7 +240,7 @@ void UDPForwarder::RecvFrom(RakNet::TimeMS curTime, ForwardEntry *forwardEntry)
 #else
 		if (errno!=EAGAIN
 			&& errno!=0
-#if defined(__GNUC__)
+#if 0 && defined(__GNUC__)
 			&& errno!=EWOULDBLOCK
 #endif
 			)
