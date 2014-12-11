@@ -44,8 +44,6 @@ class PacketLogger;
 /// \ingroup NAT_PUNCHTHROUGH_GROUP
 struct RAK_DLL_EXPORT NatPunchthroughServerDebugInterface
 {
-	NatPunchthroughServerDebugInterface() {}
-	virtual ~NatPunchthroughServerDebugInterface() {}
 	virtual void OnServerMessage(const char *msg)=0;
 };
 

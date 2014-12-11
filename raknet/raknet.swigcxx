@@ -1,0 +1,43 @@
+%module raknet
+%{
+#include "Export.h"
+#include "NatPunchthroughServer.h"
+#include "PluginInterface2.h"
+#include "RakNetSocket2.h"
+#include "RakNetTypes.h"
+#include "RakPeerInterface.h"
+#include "RakPeer.h"
+#include "RelayPlugin.h"
+#include "UDPProxyServer.h"
+#include "UDPProxyCoordinator.h"
+typedef RakNet::BitSize_t BitSize_t;
+%}
+
+namespace RakNet {
+	class RakString;
+	class UDPForwarder;
+	struct SystemAddress;
+	struct RakNetGUID;
+}
+
+#ifdef SWIGWIN
+#define _WIN32
+#define SHA1_HAS_TCHAR
+#endif
+
+#define _WIN32
+#define _RAKNET_SUPPORT_NatPunchthroughServer 1
+#define _RAKNET_SUPPORT_RelayPlugin 1
+#define _RAKNET_SUPPORT_UDPProxyCoordinator 1 
+#define _RAKNET_SUPPORT_UDPProxyServer 1
+#define _RAKNET_SUPPORT_UDPForwarder 1
+%include "Export.h"
+%include "PluginInterface2.h"
+%include "NatPunchthroughServer.h"
+%include "RakNetSocket2.h"
+%include "RakNetTypes.h"
+%include "RakPeerInterface.h"
+%include "RakPeer.h"
+%include "RelayPlugin.h"
+%include "UDPProxyServer.h"
+%include "UDPProxyCoordinator.h"
