@@ -20,12 +20,11 @@ namespace RakNet {
 	struct RakNetGUID;
 }
 
-#ifdef SWIGWIN
+#if SWIGWIN
 #define _WIN32
 #define SHA1_HAS_TCHAR
 #endif
 
-#define _WIN32
 #define _RAKNET_SUPPORT_NatPunchthroughServer 1
 #define _RAKNET_SUPPORT_RelayPlugin 1
 #define _RAKNET_SUPPORT_UDPProxyCoordinator 1 
