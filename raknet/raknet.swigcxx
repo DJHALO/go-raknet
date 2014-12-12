@@ -2,6 +2,7 @@
 %{
 #include "Export.h"
 #include "RakString.h"
+#include "MessageIdentifiers.h"
 #include "NatPunchthroughServer.h"
 #include "PluginInterface2.h"
 #include "RakNetSocket2.h"
@@ -33,6 +34,7 @@ namespace RakNet {
 #define _RAKNET_SUPPORT_UDPForwarder 1
 %include "Export.h"
 %include "RakString.h"
+%include "MessageIdentifiers.h"
 %include "PluginInterface2.h"
 %include "NatPunchthroughServer.h"
 %include "RakNetSocket2.h"
