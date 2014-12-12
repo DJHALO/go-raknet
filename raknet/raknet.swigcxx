@@ -32,7 +32,7 @@ namespace RakNet {
 #define _RAKNET_SUPPORT_UDPProxyServer 1
 #define _RAKNET_SUPPORT_UDPForwarder 1
 %include "Export.h"
-#include "RakString.h"
+%include "RakString.h"
 %include "PluginInterface2.h"
 %include "NatPunchthroughServer.h"
 %include "RakNetSocket2.h"
