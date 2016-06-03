@@ -267,7 +267,7 @@ void UDPProxyCoordinator::OnForwardingRequestFromClientToCoordinator(Packet *pac
 		outgoingBs.Write((MessageID)ID_UDP_PROXY_PING_SERVERS_FROM_COORDINATOR_TO_CLIENT);
 		outgoingBs.Write(sourceAddress);
 		outgoingBs.Write(targetAddress);
-		outgoingBs.Write(targetGuid);
+		//outgoingBs.Write(targetGuid);
 		unsigned short serverListSize = (unsigned short) serverList.Size();
 		outgoingBs.Write(serverListSize);
 		unsigned int idx;
