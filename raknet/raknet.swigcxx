@@ -44,3 +44,4 @@ namespace RakNet {
 %include "RelayPlugin.h"
 %include "UDPProxyServer.h"
 %include "UDPProxyCoordinator.h"
+%include "UDPForwarder.h"
