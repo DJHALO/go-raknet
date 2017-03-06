@@ -452,33 +452,37 @@ void UDPProxyCoordinator::OnPingServersReplyFromClientToCoordinator(Packet *pack
 	incomingBs.Read(serversToPingSize);
 	if (packet->systemAddress==sata.senderClientAddress)
 	{
+		fw->sourceServerPings.Clear(true, _FILE_AND_LINE_);
 		for (idx=0; idx < serversToPingSize; idx++)
 		{
 			incomingBs.Read(swp.serverAddress);
 			incomingBs.Read(swp.ping);
-			unsigned int index2;
-			for (index2=0; index2 < fw->sourceServerPings.Size(); index2++)
-			{
-				if (fw->sourceServerPings[index2].ping >= swp.ping )
-					break;
-			}
-			fw->sourceServerPings.Insert(swp, index2, _FILE_AND_LINE_);
+			//unsigned int index2;
+			//for (index2=0; index2 < fw->sourceServerPings.Size(); index2++)
+			//{
+			//	if (fw->sourceServerPings[index2].ping >= swp.ping )
+			//		break;
+			//}
+			//fw->sourceServerPings.Insert(swp, index2, _FILE_AND_LINE_);
+			fw->sourceServerPings.Push(swp, _FILE_AND_LINE_);
 		}
 	}
 	else
 	{
+		fw->targetServerPings.Clear(true, _FILE_AND_LINE_);
 		for (idx=0; idx < serversToPingSize; idx++)
 		{
 			incomingBs.Read(swp.serverAddress);
 			incomingBs.Read(swp.ping);
 
-			unsigned int index2;
-			for (index2=0; index2 < fw->targetServerPings.Size(); index2++)
-			{
-				if (fw->targetServerPings[index2].ping >= swp.ping )
-					break;
-			}
-			fw->sourceServerPings.Insert(swp, index2, _FILE_AND_LINE_);
+			//unsigned int index2;
+			//for (index2=0; index2 < fw->targetServerPings.Size(); index2++)
+			//{
+			//	if (fw->targetServerPings[index2].ping >= swp.ping )
+			//		break;
+			//}
+			//fw->targetServerPings.Insert(swp, index2, _FILE_AND_LINE_);
+			fw->targetServerPings.Push(swp, _FILE_AND_LINE_);
 		}
 	}
 
@@ -548,11 +552,11 @@ void UDPProxyCoordinator::ForwardingRequest::OrderRemainingServersToTry(void)
 	{
 		swp.serverAddress=remainingServersToTry[idx];
 		swp.ping=0;
-		if (sourceServerPings.Size())
+		if (sourceServerPings.Size() > idx)
 			swp.ping+=(unsigned short) (sourceServerPings[idx].ping);
 		else
 			swp.ping+=(unsigned short) (DEFAULT_CLIENT_UNRESPONSIVE_PING_TIME);
-		if (targetServerPings.Size())
+		if (targetServerPings.Size()> idx)
 			swp.ping+=(unsigned short) (targetServerPings[idx].ping);
 		else
 			swp.ping+=(unsigned short) (DEFAULT_CLIENT_UNRESPONSIVE_PING_TIME);
